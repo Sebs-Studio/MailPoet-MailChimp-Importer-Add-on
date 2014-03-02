@@ -37,8 +37,8 @@ To contribute to the plugin, visit https://github.com/seb86/MailPoet-MailChimp-I
 
 __Minimum Requirements__
 
-* MailPoet
-* Wishlist Member
+* MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
+* MailChimp (http://www.mailchimp.com/)
 
 __Automatic installation__
 
