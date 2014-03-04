@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		}
 
 		/**
-		 * Install actions such as installing pages when a button is clicked.
+		 * Install actions.
 		 */
 		public function install_actions() {
 			// Update button
