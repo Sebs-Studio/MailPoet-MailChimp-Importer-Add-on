@@ -30,7 +30,7 @@ class MailPoet_MailChimp_Importer_Addon_Admin_Help {
 	public function add_tabs() {
 		$screen = get_current_screen();
 
-		if ( ! in_array( $screen->id, MailPoet_MailChimp_Importer_Addon_get_screen_ids() ) )
+		if ( ! in_array( $screen->id, mailpoet_mailchimp_importer_addon_get_screen_ids() ) )
 			return;
 
 		$screen->add_help_tab( array(
