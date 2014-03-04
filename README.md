@@ -15,7 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Import your subscribers from your MailChimp campaigns into MailPoet via a *.csv file.
 
 ## Localization
-* English (US)[Default] - always included. mailpoet-mailchimp-importer-addon.pot file in language folder for translations.
+* English (en_US) [Default] - always included. mailpoet-mailchimp-importer-addon.pot file in language folder for translations.
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-mailchimp-importer-add-on/)
 
@@ -72,7 +72,7 @@ None at the moment.
 
 ## Changelog
 
-__1.0.0 - 03/03/2014__
+__1.0.0 - 04/03/2014__
 
 * Working Progress Release
 
