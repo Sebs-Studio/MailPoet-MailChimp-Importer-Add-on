@@ -54,10 +54,9 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 	}
 
 	/**
-	 * When running the WP importer, ensure attributes exist.
+	 * When running the WP importer, ensure the Email and First Name is not empty.
 	 *
-	 * WordPress import should work - however, it fails to import custom product attribute taxonomies.
-	 * This code grabs the file before it is imported and ensures the taxonomies are created.
+	 * This code grabs the file before it is imported and goes through a series of checks.
 	 *
 	 * @access public
 	 * @return void
@@ -78,39 +77,29 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 
 			if ( $posts && sizeof( $posts ) > 0 ) foreach ( $posts as $post ) {
 
-				if ( $post['post_type'] == 'product' ) {
+				if ( !empty( $post['First Name'] ) ) {
 
-					if ( $post['terms'] && sizeof( $post['terms'] ) > 0 ) {
+					if ( $post['First Name'] && sizeof( $post['First Name'] ) > 0 ) {
 
-						foreach ( $post['terms'] as $term ) {
+						foreach ( $post['Email Address'] as $subscriber ) {
 
-							$domain = $term['domain'];
+							// Make sure the email does not already exist!
+							$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "wysija_user WHERE email = %s;", $subscriber ) );
 
-							if ( strstr( $domain, 'pa_' ) ) {
-
-								// Make sure it exists!
-								if ( ! taxonomy_exists( $domain ) ) {
-
-									$nicename = strtolower( sanitize_title( str_replace( 'pa_', '', $domain ) ) );
-
-									$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT attribute_id FROM " . $wpdb->prefix . "woocommerce_attribute_taxonomies WHERE attribute_name = %s;", $nicename ) );
-
-									// Create the taxonomy
-									if ( ! $exists_in_db )
-										$wpdb->insert( $wpdb->prefix . "woocommerce_attribute_taxonomies", array( 'attribute_name' => $nicename, 'attribute_type' => 'select', 'attribute_orderby' => 'menu_order' ), array( '%s', '%s', '%s' ) );
-
-									// Register the taxonomy now so that the import works!
-									register_taxonomy( $domain,
-								        apply_filters( 'woocommerce_taxonomy_objects_' . $domain, array('product') ),
-								        apply_filters( 'woocommerce_taxonomy_args_' . $domain, array(
-								            'hierarchical' => true,
-								            'show_ui' => false,
-								            'query_var' => true,
-								            'rewrite' => false,
-								        ) )
-								    );
+							// If email address is not already registered then insert the subscriber.
+							if ( ! $exists_in_db ) {
+								// First check if that same email address is a WordPress User.
+								
+								$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $subscriber ) );
+								if ( ! $user_exists_in_db) {
+									$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
 								}
+								// If a registered WordPress User does exist with the same email address then fetch the user ID.
+								else{
+								}
+								$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
 							}
+
 						}
 					}
 				}

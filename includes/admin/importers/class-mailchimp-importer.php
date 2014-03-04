@@ -120,15 +120,12 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ) {
 
-						list( $country, $state, $postcode, $city, $rate, $name, $priority, $compound, $shipping, $class ) = $row;
+						list( $country, $name, $priority, $compound $class ) = $row;
 
 						$country = trim( strtoupper( $country ) );
-						$state   = trim( strtoupper( $state ) );
 
 						if ( $country == '*' )
 							$country = '';
-						if ( $state == '*' )
-							$state = '';
 						if ( $class == 'standard' )
 							$class = '';
 
@@ -136,50 +133,15 @@ if ( class_exists( 'WP_Importer' ) ) {
 							$wpdb->prefix . "mailpoet_mailchimp_imports",
 							array(
 								'tax_rate_country'  => $country,
-								'tax_rate_state'    => $state,
-								'tax_rate'          => wc_format_decimal( $rate, 4 ),
 								'tax_rate_name'     => trim( $name ),
 								'tax_rate_priority' => absint( $priority ),
 								'tax_rate_compound' => $compound ? 1 : 0,
-								'tax_rate_shipping' => $shipping ? 1 : 0,
 								'tax_rate_order'    => $loop,
 								'tax_rate_class'    => sanitize_title( $class )
 							)
 						);
 
 						$tax_rate_id = $wpdb->insert_id;
-
-						$postcode  = wc_clean( $postcode );
-						$postcodes = explode( ';', $postcode );
-						$postcodes = array_map( 'strtoupper', array_map( 'wc_clean', $postcodes ) );
-						foreach( $postcodes as $postcode ) {
-							if ( ! empty( $postcode ) && $postcode != '*' ) {
-								$wpdb->insert(
-									$wpdb->prefix . "mailpoet_mailchimp_import_locations",
-									array(
-										'location_code' => $postcode,
-										'tax_rate_id'   => $tax_rate_id,
-										'location_type' => 'postcode',
-									)
-								);
-							}
-						}
-
-						$city   = wc_clean( $city );
-						$cities = explode( ';', $city );
-						$cities = array_map( 'strtoupper', array_map( 'wc_clean', $cities ) );
-						foreach( $cities as $city ) {
-							if ( ! empty( $city ) && $city != '*' ) {
-								$wpdb->insert(
-								$wpdb->prefix . "mailpoet_mailchimp_import_locations",
-									array(
-										'location_code' => $city,
-										'tax_rate_id'   => $tax_rate_id,
-										'location_type' => 'city',
-									)
-								);
-							}
-						}
 
 						$loop ++;
 						$this->imported++;
@@ -209,7 +171,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		 * Performs post-import cleanup of files and the cache
 		 */
 		function import_end() {
-			echo '<p>' . __( 'All done!', 'mailpoet_mailchimp_importer_addon' ) . ' <a href="' . admin_url('admin.php?page=wc-settings&tab=tax') . '">' . __( 'View Subscribers', 'mailpoet_mailchimp_importer_addon' ) . '</a>' . '</p>';
+			echo '<p>' . __( 'All done!', 'mailpoet_mailchimp_importer_addon' ) . ' <a href="' . admin_url('admin.php?page=wysija_subscribers') . '">' . __( 'View Subscribers', 'mailpoet_mailchimp_importer_addon' ) . '</a>' . '</p>';
 
 			do_action( 'import_end' );
 		}
