@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MailPoet MailChimp Importer Addon\n"
-"POT-Creation-Date: 2014-03-04 01:49+0100\n"
-"PO-Revision-Date: 2014-03-04 01:49+0100\n"
+"POT-Creation-Date: 2014-03-04 13:53+0100\n"
+"PO-Revision-Date: 2014-03-04 13:53+0100\n"
 "Last-Translator: Sebastien <sebastien@ocean-themes.com>\n"
 "Language-Team: Sebs Studio <sebastien@sebs-studio.com>\n"
 "Language: en_US\n"
@@ -85,22 +85,14 @@ msgid ""
 "csv file."
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-menus.php:32
-msgid "MailPoet MailChimp Importer Settings"
-msgstr ""
-
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-menus.php:32
-msgid "MailPoet PMPro"
-msgstr ""
-
 #: includes/admin/class-mailpoet-mailchimp-importer-addon-install.php:125
 msgid "What's new:"
 msgstr ""
 
 #: includes/admin/importers/class-mailchimp-importer.php:103
-#: includes/admin/importers/class-mailchimp-importer.php:190
-#: includes/admin/importers/class-mailchimp-importer.php:230
-#: includes/admin/importers/class-mailchimp-importer.php:245
+#: includes/admin/importers/class-mailchimp-importer.php:152
+#: includes/admin/importers/class-mailchimp-importer.php:192
+#: includes/admin/importers/class-mailchimp-importer.php:207
 msgid "Sorry, there has been an error."
 msgstr ""
 
@@ -108,56 +100,56 @@ msgstr ""
 msgid "The file does not exist, please try again."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:191
+#: includes/admin/importers/class-mailchimp-importer.php:153
 msgid "The CSV is invalid."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:202
+#: includes/admin/importers/class-mailchimp-importer.php:164
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> subscribers and skipped "
 "<strong>%s</strong>."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:212
+#: includes/admin/importers/class-mailchimp-importer.php:174
 msgid "All done!"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:212
+#: includes/admin/importers/class-mailchimp-importer.php:174
 msgid "View Subscribers"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:263
+#: includes/admin/importers/class-mailchimp-importer.php:225
 msgid "Import MailChimp to MailPoet"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:285
+#: includes/admin/importers/class-mailchimp-importer.php:247
 msgid ""
 "Hi there! Upload a CSV file containing your campaign subscribers from your "
 "MailChimp list of your choosing to import into MailPoet. Choose a .csv file "
 "to upload, then click \"Upload file and import\"."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:293
+#: includes/admin/importers/class-mailchimp-importer.php:255
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:302
+#: includes/admin/importers/class-mailchimp-importer.php:264
 msgid "Choose a file from your computer:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:308
+#: includes/admin/importers/class-mailchimp-importer.php:270
 #, php-format
 msgid "Maximum size: %s"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:313
+#: includes/admin/importers/class-mailchimp-importer.php:275
 msgid "OR enter path to file:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:320
+#: includes/admin/importers/class-mailchimp-importer.php:282
 msgid "Delimiter"
 msgstr ""
 
