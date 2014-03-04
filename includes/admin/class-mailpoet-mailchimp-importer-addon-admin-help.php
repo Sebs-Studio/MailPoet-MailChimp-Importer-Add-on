@@ -33,6 +33,12 @@ class MailPoet_MailChimp_Importer_Addon_Admin_Help {
 		if ( ! in_array( $screen->id, mailpoet_mailchimp_importer_addon_get_screen_ids() ) )
 			return;
 
+		if ( $screen->parent_file == 'admin.php' || $screen->parent_file == 'tools.php' )
+			return;
+
+		if( $_GET['import'] != 'mailpoet_mailchimp_import_csv' )
+			return;
+
 		$screen->add_help_tab( array(
 			'id'	=> 'MailPoet_MailChimp_Importer_Addon_docs_tab',
 			'title'	=> __( 'Documentation', 'mailpoet_mailchimp_importer_add_on' ),

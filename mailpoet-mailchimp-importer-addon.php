@@ -145,7 +145,7 @@ final class MailPoet_MailChimp_Importer_Addon {
 		// List your action links
 		if( current_user_can( 'manage_options' ) ) {
 			$plugin_links = array(
-				'<a href="' . admin_url( 'import.php?page=mailpoet_mailchimp_import_csv' ) . '">' . __( 'Import', 'mailpoet_mailchimp_importer_addon' ) . '</a>',
+				'<a href="' . admin_url( 'admin.php?import=mailpoet_mailchimp_import_csv' ) . '">' . __( 'Import', 'mailpoet_mailchimp_importer_addon' ) . '</a>',
 			);
 		}
 
@@ -210,7 +210,6 @@ final class MailPoet_MailChimp_Importer_Addon {
 			return false;
 		}
 
-		// Line 197 to 200 does not want to work for some reason so until I can fix it this is disabled for the moment.
 		/*if( !is_plugin_active( 'wysija-newsletters/index.php' ) ) {
 			add_action( 'admin_notices', array( &$this, 'display_req_notice_mailpoet' ) );
 			return false;

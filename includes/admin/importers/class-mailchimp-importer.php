@@ -34,7 +34,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 		/**
 		 * Registered callback function for the WordPress Importer
 		 *
-		 * Manages the three separate stages of the CSV import process
+		 * Manages the two separate stages of the CSV import process
 		 */
 		function dispatch() {
 			$this->header();
@@ -54,15 +54,18 @@ if ( class_exists( 'WP_Importer' ) ) {
 					check_admin_referer( 'import-upload' );
 					if ( $this->handle_upload() ) {
 
-						if ( $this->id )
+						if ( $this->id ) {
 							$file = get_attached_file( $this->id );
-						else
+						}
+						else {
 							$file = ABSPATH . $this->file_url;
+						}
 
 						add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
 
-						if ( function_exists( 'gc_enable' ) )
+						if ( function_exists( 'gc_enable' ) ) {
 							gc_enable();
+						}
 
 						@set_time_limit(0);
 						@ob_flush();
@@ -110,38 +113,75 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			ini_set( 'auto_detect_line_endings', '1' );
 
+			$domain = get_bloginfo('url');
+			if( !empty( $domain ) ) {
+				if( is_ssl() ) { 
+					$domain = str_replace( 'https://www.', '', $domain );
+				}
+				else{
+					$domain = str_replace( 'http://www.', '', $domain );
+				}
+			}
+
 			if ( ( $handle = fopen( $file, "r" ) ) !== FALSE ) {
 
 				$header = fgetcsv( $handle, 0, $this->delimiter );
 
-				if ( sizeof( $header ) == 10 ) {
+				if ( sizeof( $header ) == 20 ) {
 
 					$loop = 0;
 
 					while ( ( $row = fgetcsv( $handle, 0, $this->delimiter ) ) !== FALSE ) {
 
-						list( $country, $name, $priority, $compound $class ) = $row;
+						list( $email, $fname, $lname, $website, $format, $member_rating, $optin_time, $optin_ip, $confirm_time, $confirm_ip, $latitude, $longitude, $gmtoff, $dstoff, $timezone, $cc, $region, $last_changed, $leid, $euid ) = $row;
 
-						$country = trim( strtoupper( $country ) );
+						// Make sure the email does not already exist!
+						$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "wysija_user WHERE email = %s;", $email ) );
 
-						if ( $country == '*' )
-							$country = '';
-						if ( $class == 'standard' )
-							$class = '';
+						// If email address is not already registered then insert the subscriber.
+						if ( ! $exists_in_db ) {
+							// First check if that same email address is a WordPress User.
+							$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $email ) );
 
-						$wpdb->insert(
-							$wpdb->prefix . "mailpoet_mailchimp_imports",
-							array(
-								'tax_rate_country'  => $country,
-								'tax_rate_name'     => trim( $name ),
-								'tax_rate_priority' => absint( $priority ),
-								'tax_rate_compound' => $compound ? 1 : 0,
-								'tax_rate_order'    => $loop,
-								'tax_rate_class'    => sanitize_title( $class )
-							)
-						);
-
-						$tax_rate_id = $wpdb->insert_id;
+							// If the user does not exist already in WordPress then just add the subscriber.
+							if ( ! $user_exists_in_db) {
+								// Insert subscriber to MailPoet.
+								$wpdb->insert( 
+									$wpdb->prefix . "wysija_user", 
+									array( 
+										'email' 		=> $email, 
+										'firstname' 	=> $fname, 
+										'lastname' 		=> $lname,
+										'ip' 			=> $optin_ip,
+										'created_at' 	=> strtotime($optin_time),
+										'status' 		=> 1,
+										'domain' 		=> $domain,
+										'confirmed_at' 	=> strtotime($confirm_time),
+										'confirmed_ip' 	=> $confirm_ip
+									)
+								);
+							}
+							// If a registered WordPress User does exist with the same email address then fetch the user ID.
+							else{
+								$user = get_user_by( 'email', $email ); // Get user_id by email address.
+								// Insert subscriber to MailPoet.
+								$wpdb->insert( 
+									$wpdb->prefix . "wysija_user", 
+									array( 
+										'wp_user_id' 	=> $user->id,
+										'email' 		=> $email, 
+										'firstname' 	=> $fname, 
+										'lastname' 		=> $lname,
+										'ip' 			=> $optin_ip,
+										'created_at' 	=> strtotime($optin_time),
+										'status' 		=> 1,
+										'domain' 		=> $domain,
+										'confirmed_at' 	=> strtotime($confirm_time),
+										'confirmed_ip' 	=> $confirm_ip
+									)
+								);
+							} // end if user is a WordPress User.
+						}
 
 						$loop ++;
 						$this->imported++;
@@ -285,7 +325,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 						</tbody>
 					</table>
 					<p class="submit">
-						<input type="submit" class="button" value="<?php esc_attr_e( 'Upload file and import', 'mailpoet_mailchimp_importer_addon' ); ?>" />
+						<input type="submit" class="button-primary" value="<?php esc_attr_e( 'Upload file and import', 'mailpoet_mailchimp_importer_addon' ); ?>" />
 					</p>
 				</form>
 				<?php

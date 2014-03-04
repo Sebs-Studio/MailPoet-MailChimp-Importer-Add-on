@@ -21,15 +21,15 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'register_importers' ) );
-		add_action( 'import_start', array( $this, 'post_importer_compatibility' ) );
+		add_action( 'admin_init', array( &$this, 'register_importers' ) );
+		//add_action( 'import_start', array( &$this, 'post_importer_compatibility' ) );
 	}
 
 	/**
 	 * Add menu items
 	 */
 	public function register_importers() {
-		register_importer( 'mailpoet_mailchimp_import_csv', __( 'MailPoet MailChimp Importer', mailpoet_mailchimp_importer_addon ), __( 'Import your subscribers from your MailChimp campaigns into MailPoet via a csv file.', mailpoet_mailchimp_importer_addon), array( $this, 'mailchimp_importer' ) );
+		register_importer( 'mailpoet_mailchimp_import_csv', __( 'MailChimp to MailPoet', 'mailpoet_mailchimp_importer_addon' ), __( 'Import your subscribers from your MailChimp campaigns into MailPoet via a csv file.', 'mailpoet_mailchimp_importer_addon'), array( &$this, 'mailchimp_importer' ) );
 	}
 
 	/**
@@ -41,8 +41,9 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 
 		if ( ! class_exists( 'WP_Importer' ) ) {
 			$class_wp_importer = ABSPATH . 'wp-admin/includes/class-wp-importer.php';
-			if ( file_exists( $class_wp_importer ) )
+			if ( file_exists( $class_wp_importer ) ) {
 				require $class_wp_importer;
+			}
 		}
 
 		// includes
@@ -75,38 +76,35 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 		if ( isset( $import_data['posts'] ) ) {
 			$posts = $import_data['posts'];
 
-			if ( $posts && sizeof( $posts ) > 0 ) foreach ( $posts as $post ) {
+			if ( !empty( $post['First Name'] ) ) {
 
-				if ( !empty( $post['First Name'] ) ) {
+				if ( $post['First Name'] && sizeof( $post['First Name'] ) > 0 ) {
 
-					if ( $post['First Name'] && sizeof( $post['First Name'] ) > 0 ) {
+					foreach ( $post['Email Address'] as $subscriber ) {
 
-						foreach ( $post['Email Address'] as $subscriber ) {
+						// Make sure the email does not already exist!
+						$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "wysija_user WHERE email = %s;", $subscriber ) );
 
-							// Make sure the email does not already exist!
-							$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "wysija_user WHERE email = %s;", $subscriber ) );
+						// If email address is not already registered then insert the subscriber.
+						if ( ! $exists_in_db ) {
+							// First check if that same email address is a WordPress User.
+							$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $subscriber ) );
 
-							// If email address is not already registered then insert the subscriber.
-							if ( ! $exists_in_db ) {
-								// First check if that same email address is a WordPress User.
-								
-								$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $subscriber ) );
-								if ( ! $user_exists_in_db) {
-									$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
-								}
-								// If a registered WordPress User does exist with the same email address then fetch the user ID.
-								else{
-								}
+							if ( ! $user_exists_in_db) {
 								$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
 							}
-
+							// If a registered WordPress User does exist with the same email address then fetch the user ID.
+							else{
+							}
+							$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
 						}
 					}
 				}
 			}
 		}
 	}
-}
+
+} // end class
 
 } // end if class exists
 

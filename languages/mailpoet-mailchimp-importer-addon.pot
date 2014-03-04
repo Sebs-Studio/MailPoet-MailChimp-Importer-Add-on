@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MailPoet MailChimp Importer Addon\n"
-"POT-Creation-Date: 2014-03-04 13:53+0100\n"
-"PO-Revision-Date: 2014-03-04 13:53+0100\n"
+"POT-Creation-Date: 2014-03-04 20:17+0100\n"
+"PO-Revision-Date: 2014-03-04 20:17+0100\n"
 "Last-Translator: Sebastien <sebastien@ocean-themes.com>\n"
 "Language-Team: Sebs Studio <sebastien@sebs-studio.com>\n"
 "Language: en_US\n"
@@ -16,41 +16,41 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n;_x\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:38
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:44
 #: mailpoet-mailchimp-importer-addon.php:169
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:41
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:47
 msgid ""
 "Thank you for using MailPoet MailChimp Importer Add-on :) Should you need "
 "help using MailPoet MailChimp Importer Add-on please read the documentation."
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:43
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:49
 msgid "MailPoet MailChimp Importer Add-on Documentation"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:49
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:55
 msgid "Support"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:52
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:58
 #, php-format
 msgid ""
 "After <a href=\"%s\">reading the documentation</a>, for further assistance "
 "you can use the <a href=\"%s\">community forum</a>."
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:54
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:60
 msgid "Community Support"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:60
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:66
 msgid "Found a bug?"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:63
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:69
 #, php-format
 msgid ""
 "If you find a bug within MailPoet MailChimp Importer Add-on you can create a "
@@ -59,24 +59,24 @@ msgid ""
 "as possible."
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:65
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:71
 msgid "Report a bug"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:70
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:76
 msgid "For more information:"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:71
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:77
 msgid "Project on WordPress.org"
 msgstr ""
 
-#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:72
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:78
 msgid "Project on Github"
 msgstr ""
 
 #: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-importers.php:32
-msgid "MailPoet MailChimp Importer"
+msgid "MailChimp to MailPoet"
 msgstr ""
 
 #: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-importers.php:32
@@ -89,71 +89,71 @@ msgstr ""
 msgid "What's new:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:103
-#: includes/admin/importers/class-mailchimp-importer.php:152
+#: includes/admin/importers/class-mailchimp-importer.php:106
 #: includes/admin/importers/class-mailchimp-importer.php:192
-#: includes/admin/importers/class-mailchimp-importer.php:207
+#: includes/admin/importers/class-mailchimp-importer.php:232
+#: includes/admin/importers/class-mailchimp-importer.php:247
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:104
+#: includes/admin/importers/class-mailchimp-importer.php:107
 msgid "The file does not exist, please try again."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:153
+#: includes/admin/importers/class-mailchimp-importer.php:193
 msgid "The CSV is invalid."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:164
+#: includes/admin/importers/class-mailchimp-importer.php:204
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> subscribers and skipped "
 "<strong>%s</strong>."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:174
+#: includes/admin/importers/class-mailchimp-importer.php:214
 msgid "All done!"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:174
+#: includes/admin/importers/class-mailchimp-importer.php:214
 msgid "View Subscribers"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:225
+#: includes/admin/importers/class-mailchimp-importer.php:265
 msgid "Import MailChimp to MailPoet"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:247
+#: includes/admin/importers/class-mailchimp-importer.php:287
 msgid ""
 "Hi there! Upload a CSV file containing your campaign subscribers from your "
 "MailChimp list of your choosing to import into MailPoet. Choose a .csv file "
 "to upload, then click \"Upload file and import\"."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:255
+#: includes/admin/importers/class-mailchimp-importer.php:295
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:264
+#: includes/admin/importers/class-mailchimp-importer.php:304
 msgid "Choose a file from your computer:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:270
+#: includes/admin/importers/class-mailchimp-importer.php:310
 #, php-format
 msgid "Maximum size: %s"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:275
+#: includes/admin/importers/class-mailchimp-importer.php:315
 msgid "OR enter path to file:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:282
+#: includes/admin/importers/class-mailchimp-importer.php:322
 msgid "Delimiter"
 msgstr ""
 
-#: includes/admin/mailpoet-mailchimp-importer-admin-functions.php:19
+#: includes/admin/mailpoet-mailchimp-importer-addon-admin-functions.php:19
 msgid "MailPoet MailChimp Importer Add-on"
 msgstr ""
 
@@ -161,12 +161,12 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: mailpoet-mailchimp-importer-addon.php:229
+#: mailpoet-mailchimp-importer-addon.php:228
 #, php-format
 msgid "Sorry, <strong>%s</strong> requires WordPress "
 msgstr ""
 
-#: mailpoet-mailchimp-importer-addon.php:240
+#: mailpoet-mailchimp-importer-addon.php:239
 #, php-format
 msgid ""
 "Sorry, <strong>%s</strong> requires MailPoet Newsletters for this plugin to "

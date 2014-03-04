@@ -20,6 +20,7 @@ function mailpoet_mailchimp_importer_addon_get_screen_ids() {
 
 	return apply_filters( 'mailpoet_mailchimp_importer_addon_screen_ids', array(
 		'toplevel_page_' . $mailpoet_mailchimp_importer_addon_screen_id,
+		'admin'
 	) );
 }
 
