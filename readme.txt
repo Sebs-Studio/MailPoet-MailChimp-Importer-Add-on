@@ -1,5 +1,4 @@
-# MailPoet MailChimp Importer Add-on 
-
+=== MailPoet MailChimp Importer Add-on ===
 Contributors: wysija, sebd86 
 Tags: mailpoet, wysija, mailchimp, sebs studio, extension, add-on 
 Requires at least: 3.7.1 
@@ -8,13 +7,15 @@ Stable tag: trunk
 License: GPLv2 or later 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
-## Description
+Import your subscribers from your MailChimp campaigns into MailPoet via a *.csv file.
+
+== Description ==
 
 > This plugin requires <a href="http://wordpress.org/plugins/wysija-newsletters/" rel="nofollow">MailPoet plugin</a> and <a href="http://www.mailchimp.com" rel="nofollow">MailChimp</a> account.
 
 Import your subscribers from your MailChimp campaigns into MailPoet via a *.csv file. Simply select the CSV file or locate it on your server and assign the lists the subscribers will be added to.
 
-## Localization
+= Localization =
 * English (en_US) [Default] - always included. mailpoet-mailchimp-importer-addon.pot file in language folder for translations.
 
 If you would like to do a translation for the plugin, you can do so via Transifex.  (https://www.transifex.com/projects/p/mailpoet-mailchimp-importer-add-on/)
@@ -25,28 +26,28 @@ If you have done a translation via PoEdit, then you are welcome to send that als
 
 I'll acknowledge your contribution here with either your full name or username given.
 
-## Documentation
+= Documentation =
 
 For all documentation on this plugin go to: http://docs.sebs-studio.com/user-guide/extension/mailpoet-mailchimp-importer-add-on/
 
-## Contributing
+= Contributing =
 
 To contribute to the plugin, visit https://github.com/seb86/MailPoet-MailChimp-Importer-Add-on/blob/master/CONTRIBUTING.md for details.
 
-## Installation
+== Installation ==
 
-__Minimum Requirements__
+= Minimum Requirements =
 
 * MailPoet (http://wordpress.org/plugins/wysija-newsletters/)
 * MailChimp (http://www.mailchimp.com/)
 
-__Automatic installation__
+= Automatic installation =
 
 Automatic installation is the easiest option as WordPress handles the file transfers itself and you don't even need to leave your web browser. To do an automatic install of MailPoet MailChimp Importer Add-on, log in to your WordPress admin panel, navigate to the Plugins menu and click Add New.
 
 In the search field type "MailPoet MailChimp Importer Add-on" and click Search Plugins. Once you've found my plugin extension you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking Install Now. After clicking that link you will be asked if you're sure you want to install the plugin. Click yes and WordPress will automatically complete the installation.
 
-__Manual installation__
+= Manual installation =
 
 The manual installation method involves downloading my plugin and uploading it to your web-server via your favourite FTP application.
 
@@ -54,7 +55,7 @@ The manual installation method involves downloading my plugin and uploading it t
 2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
-## Using the Plugin
+= Using the Plugin =
 
 Once the plugin is activated, go to 'Tools -> Import' and select 'MailChimp to MailPoet'. Then either select a CSV file containing your subscribers or locate one already on you server.
 
@@ -64,26 +65,26 @@ Let the importer process and you will then be told that all subscribers have bee
 
 It's that simple.
 
-## Upgrading
+= Upgrading =
 
 Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
 
-## Screenshots
+== Screenshots ==
 
 1. Access to the importer-add-on
 2. Import page
 3. Import complete
 
-## Frequently Asked Questions 
+== Frequently Asked Questions ==
 
 None at the moment.
 
-## Changelog
+== Changelog ==
 
 __1.0.0 - 05/03/2014__
 
 * First Release
 
-## Upgrade Notice 
+== Upgrade Notice ==
 
 * First release

@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MailPoet MailChimp Importer Addon\n"
+"POT-Creation-Date: 2014-03-05 03:28+0100\n"
+"PO-Revision-Date: 2014-03-05 03:30+0100\n"
+"Last-Translator: Sebastien <sebastien@ocean-themes.com>\n"
+"Language-Team: Sebs Studio <sebastien@sebs-studio.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:44
+#: mailpoet-mailchimp-importer-addon.php:169
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:47
+msgid ""
+"Thank you for using MailPoet MailChimp Importer Add-on :) Should you need "
+"help using MailPoet MailChimp Importer Add-on please read the documentation."
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:49
+msgid "MailPoet MailChimp Importer Add-on Documentation"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:55
+msgid "Support"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:58
+#, php-format
+msgid ""
+"After <a href=\"%s\">reading the documentation</a>, for further assistance "
+"you can use the <a href=\"%s\">community forum</a>."
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:60
+msgid "Community Support"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:66
+msgid "Found a bug?"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:69
+#, php-format
+msgid ""
+"If you find a bug within MailPoet MailChimp Importer Add-on you can create a "
+"ticket via <a href=\"%s\">Github issues</a>. Ensure you read the <a href=\"%s"
+"\">contribution guide</a> prior to submitting your report. Be as descriptive "
+"as possible."
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:71
+msgid "Report a bug"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:76
+msgid "For more information:"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:77
+msgid "Project on WordPress.org"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-help.php:78
+msgid "Project on Github"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-importers.php:32
+msgid "MailChimp to MailPoet"
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-admin-importers.php:32
+msgid ""
+"Import your subscribers from your MailChimp campaigns into MailPoet via a "
+"csv file."
+msgstr ""
+
+#: includes/admin/class-mailpoet-mailchimp-importer-addon-install.php:125
+msgid "What's new:"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:56
+#: includes/admin/importers/class-mailchimp-importer.php:114
+#: includes/admin/importers/class-mailchimp-importer.php:216
+#: includes/admin/importers/class-mailchimp-importer.php:256
+#: includes/admin/importers/class-mailchimp-importer.php:271
+msgid "Sorry, there has been an error."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:57
+#, php-format
+msgid ""
+"You need to assign the subscribers to at least one list before they can be "
+"imported. Please <a href=\"%s\">go back</a>."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:115
+#, php-format
+msgid ""
+"The file does not exist, please <a href=\"%s\">go back</a> and try again."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:217
+#, php-format
+msgid ""
+"The CSV is invalid. Please <a href=\"%s\">go back</a> and select a valid CSV "
+"file."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:228
+#, php-format
+msgid ""
+"Import complete - imported <strong>%s</strong> subscribers and skipped "
+"<strong>%s</strong>."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:238
+msgid "All done!"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:238
+msgid "View Subscribers"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:257
+#, php-format
+msgid ""
+"Please <a href=\"%s\">go back</a> and either upload a CSV file or locate it "
+"on your server."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:289
+msgid "Import MailChimp to MailPoet"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:311
+msgid ""
+"Hi there! Upload a CSV file containing your campaign subscribers from your "
+"MailChimp list of your choosing to import into MailPoet. Choose a .csv file "
+"to upload, then click \"Upload file and import\"."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:319
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:328
+msgid "Choose a file from your computer:"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:334
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:339
+msgid "OR enter path to file:"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:346
+msgid "Delimiter"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:350
+msgid "Assign to Lists"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:351
+msgid "Select the lists you are assigning these subscribers to."
+msgstr ""
+
+#: includes/admin/mailpoet-mailchimp-importer-addon-admin-functions.php:19
+msgid "MailPoet MailChimp Importer Add-on"
+msgstr ""
+
+#: mailpoet-mailchimp-importer-addon.php:148
+msgid "Import"
+msgstr ""
+
+#: mailpoet-mailchimp-importer-addon.php:228
+#, php-format
+msgid "Sorry, <strong>%s</strong> requires WordPress "
+msgstr ""
+
+#: mailpoet-mailchimp-importer-addon.php:239
+#, php-format
+msgid ""
+"Sorry, <strong>%s</strong> requires MailPoet Newsletters for this plugin to "
+"work. Please install and activate <strong><a href=\"%s\">MailPoet "
+"Newsletters</a></strong> first."
+msgstr ""
