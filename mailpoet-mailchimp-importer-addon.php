@@ -275,9 +275,6 @@ final class MailPoet_MailChimp_Importer_Addon {
 	public function init_mailpoet_mailchimp_importer_addon() {
 		// Set up localisation
 		$this->load_plugin_textdomain();
-
-		// Load JavaScript and stylesheets
-		$this->register_scripts_and_styles();
 	}
 
 	/**
@@ -321,47 +318,6 @@ final class MailPoet_MailChimp_Importer_Addon {
 	public function plugin_path() {
 		return untrailingslashit( plugin_dir_path( __FILE__ ) );
 	}
-
-	/**
-	 * Registers and enqueues stylesheets and javascripts 
-	 * for the administration panel and the front of the site.
-	 *
-	 * @access private
-	 */
-	private function register_scripts_and_styles() {
-		global $wp_locale;
-
-		if ( is_admin() ) {
-			// Stylesheets
-			$this->load_file( self::slug . '_admin_style', '/assets/css/admin/mailpoet-mailchimp-importer-addon.css' );
-		} // end if is_admin()
-	} // end register_scripts_and_styles
-
-	/**
-	 * Helper function for registering and enqueueing scripts and styles.
-	 *
-	 * @name	The 	ID to register with WordPress
-	 * @file_path		The path to the actual file
-	 * @is_script		Optional argument for if the incoming file_path is a JavaScript source file.
-	 *
-	 * @access private
-	 */
-	private function load_file( $name, $file_path, $is_script = false, $support = array(), $version = '' ) {
-		$url = $this->plugin_url() . $file_path;
-		$file = $this->plugin_path() . $file_path;
-
-		if( file_exists( $file ) ) {
-			if( $is_script ) {
-				wp_register_script( $name, $url, $support, $version );
-				wp_enqueue_script( $name );
-			}
-			else {
-				wp_register_style( $name, $url );
-				wp_enqueue_style( $name );
-			} // end if
-		} // end if
-
-	} // end load_file
 
 } // end class
 
