@@ -51,6 +51,14 @@ if ( class_exists( 'WP_Importer' ) ) {
 					$this->greet();
 					break;
 				case 1:
+					// Checks if at least one list has been assigned for the subscribers to be attached to.
+					if ( empty( $_POST['assigned_lists'] ) ) {
+						echo '<p><strong>' . __( 'Sorry, there has been an error.', 'mailpoet_mailchimp_importer_addon' ) . '</strong><br />';
+						echo sprintf( __( 'You need to assign the subscribers to at least one list before they can be imported. Please <a href="%s">go back</a>.', 'mailpoet_mailchimp_importer_addon' ), 'javascript:history.go(-1)' ) . '</p>';
+						$this->footer();
+						die();
+					}
+
 					check_admin_referer( 'import-upload' );
 					if ( $this->handle_upload() ) {
 
@@ -104,7 +112,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 			if ( ! is_file($file) ) {
 				echo '<p><strong>' . __( 'Sorry, there has been an error.', 'mailpoet_mailchimp_importer_addon' ) . '</strong><br />';
-				echo __( 'The file does not exist, please try again.', 'mailpoet_mailchimp_importer_addon' ) . '</p>';
+				echo sprintf( __( 'The file does not exist, please <a href="%s">go back</a> and try again.', 'mailpoet_mailchimp_importer_addon' ), 'javascript:history.go(-1)' ) . '</p>';
 				$this->footer();
 				die();
 			}
@@ -141,11 +149,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 						// If email address is not already registered then insert the subscriber.
 						if ( ! $exists_in_db ) {
 							// First check if that same email address is a WordPress User.
-							$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $email ) );
+							$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM " . $wpdb->prefix . "users WHERE user_email = %s;", $email ) );
 
 							// If the user does not exist already in WordPress then just add the subscriber.
 							if ( ! $user_exists_in_db) {
-								// Insert subscriber to MailPoet.
+								// Insert subscriber to MailPoet users table.
 								$wpdb->insert( 
 									$wpdb->prefix . "wysija_user", 
 									array( 
@@ -155,9 +163,9 @@ if ( class_exists( 'WP_Importer' ) ) {
 										'ip' 			=> $optin_ip,
 										'created_at' 	=> strtotime($optin_time),
 										'status' 		=> 1,
-										'domain' 		=> $domain,
-										'confirmed_at' 	=> strtotime($confirm_time),
-										'confirmed_ip' 	=> $confirm_ip
+										//'domain' 		=> $domain,
+										//'confirmed_at' 	=> strtotime($confirm_time),
+										//'confirmed_ip' 	=> $confirm_ip
 									)
 								);
 							}
@@ -168,19 +176,35 @@ if ( class_exists( 'WP_Importer' ) ) {
 								$wpdb->insert( 
 									$wpdb->prefix . "wysija_user", 
 									array( 
-										'wp_user_id' 	=> $user->id,
+										'wpuser_id' 	=> $user->id,
 										'email' 		=> $email, 
 										'firstname' 	=> $fname, 
 										'lastname' 		=> $lname,
 										'ip' 			=> $optin_ip,
 										'created_at' 	=> strtotime($optin_time),
 										'status' 		=> 1,
-										'domain' 		=> $domain,
-										'confirmed_at' 	=> strtotime($confirm_time),
-										'confirmed_ip' 	=> $confirm_ip
+										//'domain' 		=> $domain,
+										//'confirmed_at' 	=> strtotime($confirm_time),
+										//'confirmed_ip' 	=> $confirm_ip
 									)
 								);
 							} // end if user is a WordPress User.
+
+							// Assign the subscriber to the lists selected.
+							$user_data = array(
+								'email' 	=> $email,
+								'firstname' => $fname,
+								'lastname' 	=> $lname
+							);
+
+							$data_subscriber = array(
+								'user' 		=> $user_data,
+								'user_list' => array('list_ids' => array($_POST['assigned_lists']))
+							);
+
+							$userHelper = &WYSIJA::get('user','helper');
+							$userHelper->addSubscriber($data_subscriber);
+
 						}
 
 						$loop ++;
@@ -190,7 +214,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 				} else {
 
 					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'mailpoet_mailchimp_importer_addon' ) . '</strong><br />';
-					echo __( 'The CSV is invalid.', 'mailpoet_mailchimp_importer_addon' ) . '</p>';
+					echo sprintf( __( 'The CSV is invalid. Please <a href="%s">go back</a> and select a valid CSV file.', 'mailpoet_mailchimp_importer_addon' ), 'javascript:history.go(-1)' ) . '</p>';
 					$this->footer();
 					die();
 
@@ -230,7 +254,7 @@ if ( class_exists( 'WP_Importer' ) ) {
 
 				if ( isset( $file['error'] ) ) {
 					echo '<p><strong>' . __( 'Sorry, there has been an error.', 'mailpoet_mailchimp_importer_addon' ) . '</strong><br />';
-					echo esc_html( $file['error'] ) . '</p>';
+					echo sprintf( esc_html( $file['error'] ) . '&nbsp;' . __( 'Please <a href="%s">go back</a> and either upload a CSV file or locate it on your server.', 'mailpoet_mailchimp_importer_addon'), 'javascript:history.go(-1)') . '</p>';
 					return false;
 				}
 
@@ -319,8 +343,24 @@ if ( class_exists( 'WP_Importer' ) ) {
 								</td>
 							</tr>
 							<tr>
-								<th><label><?php _e( 'Delimiter', 'mailpoet_mailchimp_importer_addon' ); ?></label><br/></th>
+								<th><label for="delimiter"><?php _e( 'Delimiter', 'mailpoet_mailchimp_importer_addon' ); ?></label><br/></th>
 								<td><input type="text" name="delimiter" placeholder="," size="2" /></td>
+							</tr>
+							<tr>
+								<th><label for="assign"><?php _e( 'Assign to Lists', 'mailpoet_mailchimp_importer_addon' ); ?></label></th>
+								<td><?php _e('Select the lists you are assigning these subscribers to.', 'mailpoet_mailchimp_importer_addon'); ?></td>
+							</tr>
+							<?php
+							foreach(mailpoet_lists() as $key => $list){
+								$list_id = $list['list_id'];
+								echo '<tr>
+									<th></th>
+									<td>
+										<label><input type="checkbox" name="assigned_lists[]" value="'.esc_attr($list_id).'" /> '.$list['name'].'</label>
+									</td>
+								</tr>';
+							}
+							?>
 							</tr>
 						</tbody>
 					</table>

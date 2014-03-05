@@ -22,7 +22,6 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 	 */
 	public function __construct() {
 		add_action( 'admin_init', array( &$this, 'register_importers' ) );
-		//add_action( 'import_start', array( &$this, 'post_importer_compatibility' ) );
 	}
 
 	/**
@@ -52,56 +51,6 @@ class MailPoet_MailChimp_Importer_Add_on_Admin_Importers {
 		// Dispatch
 		$importer = new MailPoet_MailChimp_Importer();
 		$importer->dispatch();
-	}
-
-	/**
-	 * When running the WP importer, ensure the Email and First Name is not empty.
-	 *
-	 * This code grabs the file before it is imported and goes through a series of checks.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function post_importer_compatibility() {
-		global $wpdb;
-
-		if ( empty( $_POST['import_id'] ) || ! class_exists( 'WXR_Parser' ) )
-			return;
-
-		$id          = (int) $_POST['import_id'];
-		$file        = get_attached_file( $id );
-		$parser      = new WXR_Parser();
-		$import_data = $parser->parse( $file );
-
-		if ( isset( $import_data['posts'] ) ) {
-			$posts = $import_data['posts'];
-
-			if ( !empty( $post['First Name'] ) ) {
-
-				if ( $post['First Name'] && sizeof( $post['First Name'] ) > 0 ) {
-
-					foreach ( $post['Email Address'] as $subscriber ) {
-
-						// Make sure the email does not already exist!
-						$exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "wysija_user WHERE email = %s;", $subscriber ) );
-
-						// If email address is not already registered then insert the subscriber.
-						if ( ! $exists_in_db ) {
-							// First check if that same email address is a WordPress User.
-							$user_exists_in_db = $wpdb->get_var( $wpdb->prepare( "SELECT email FROM " . $wpdb->prefix . "users WHERE email = %s;", $subscriber ) );
-
-							if ( ! $user_exists_in_db) {
-								$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
-							}
-							// If a registered WordPress User does exist with the same email address then fetch the user ID.
-							else{
-							}
-							$wpdb->insert( $wpdb->prefix . "wysija_user", array( 'email' => $subscriber, 'firstname' => $post['firstname'], 'lastname' => $post['lastname'] ), array( '%s', '%s', '%s' ) );
-						}
-					}
-				}
-			}
-		}
 	}
 
 } // end class

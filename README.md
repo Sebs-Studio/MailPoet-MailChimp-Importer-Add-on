@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 > This plugin requires <a href="http://wordpress.org/plugins/wysija-newsletters/" rel="nofollow">MailPoet plugin</a> and <a href="http://www.mailchimp.com" rel="nofollow">MailChimp</a> account.
 
-Import your subscribers from your MailChimp campaigns into MailPoet via a *.csv file.
+Import your subscribers from your MailChimp campaigns into MailPoet via a *.csv file. Simply select the CSV file or locate it on your server and assign the lists the subscribers will be added to.
 
 ## Localization
 * English (en_US) [Default] - always included. mailpoet-mailchimp-importer-addon.pot file in language folder for translations.
@@ -54,9 +54,15 @@ The manual installation method involves downloading my plugin and uploading it t
 2. Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory.
 3. Activate the plugin from the Plugins menu within the WordPress admin.
 
-## Setting up the Plugin
+## Using the Plugin
 
-- Coming Soon
+Once the plugin is activated, go to 'Tools -> Import' and select 'MailChimp to MailPoet'. Then either select a CSV file containing your subscribers or locate one already on you server.
+
+Once the file is ready, select the lists you want to assign these subscribers to and press 'Upload file and import'.
+
+Let the importer process and you will then be told that all subscribers have been imported.
+
+It's that simple.
 
 ## Upgrading
 
@@ -64,7 +70,9 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 ## Screenshots
 
-1. Coming Soon
+1. Access to the importer-add-on
+2. Import page
+3. Import complete
 
 ## Frequently Asked Questions 
 
@@ -72,9 +80,9 @@ None at the moment.
 
 ## Changelog
 
-__1.0.0 - 04/03/2014__
+__1.0.0 - 05/03/2014__
 
-* Working Progress Release
+* First Release
 
 ## Upgrade Notice 
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MailPoet MailChimp Importer Addon\n"
-"POT-Creation-Date: 2014-03-04 20:17+0100\n"
-"PO-Revision-Date: 2014-03-04 20:17+0100\n"
+"POT-Creation-Date: 2014-03-05 03:28+0100\n"
+"PO-Revision-Date: 2014-03-05 03:30+0100\n"
 "Last-Translator: Sebastien <sebastien@ocean-themes.com>\n"
 "Language-Team: Sebs Studio <sebastien@sebs-studio.com>\n"
 "Language: en_US\n"
@@ -89,68 +89,96 @@ msgstr ""
 msgid "What's new:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:106
-#: includes/admin/importers/class-mailchimp-importer.php:192
-#: includes/admin/importers/class-mailchimp-importer.php:232
-#: includes/admin/importers/class-mailchimp-importer.php:247
+#: includes/admin/importers/class-mailchimp-importer.php:56
+#: includes/admin/importers/class-mailchimp-importer.php:114
+#: includes/admin/importers/class-mailchimp-importer.php:216
+#: includes/admin/importers/class-mailchimp-importer.php:256
+#: includes/admin/importers/class-mailchimp-importer.php:271
 msgid "Sorry, there has been an error."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:107
-msgid "The file does not exist, please try again."
+#: includes/admin/importers/class-mailchimp-importer.php:57
+#, php-format
+msgid ""
+"You need to assign the subscribers to at least one list before they can be "
+"imported. Please <a href=\"%s\">go back</a>."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:193
-msgid "The CSV is invalid."
+#: includes/admin/importers/class-mailchimp-importer.php:115
+#, php-format
+msgid ""
+"The file does not exist, please <a href=\"%s\">go back</a> and try again."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:204
+#: includes/admin/importers/class-mailchimp-importer.php:217
+#, php-format
+msgid ""
+"The CSV is invalid. Please <a href=\"%s\">go back</a> and select a valid CSV "
+"file."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:228
 #, php-format
 msgid ""
 "Import complete - imported <strong>%s</strong> subscribers and skipped "
 "<strong>%s</strong>."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:214
+#: includes/admin/importers/class-mailchimp-importer.php:238
 msgid "All done!"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:214
+#: includes/admin/importers/class-mailchimp-importer.php:238
 msgid "View Subscribers"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:265
+#: includes/admin/importers/class-mailchimp-importer.php:257
+#, php-format
+msgid ""
+"Please <a href=\"%s\">go back</a> and either upload a CSV file or locate it "
+"on your server."
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:289
 msgid "Import MailChimp to MailPoet"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:287
+#: includes/admin/importers/class-mailchimp-importer.php:311
 msgid ""
 "Hi there! Upload a CSV file containing your campaign subscribers from your "
 "MailChimp list of your choosing to import into MailPoet. Choose a .csv file "
 "to upload, then click \"Upload file and import\"."
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:295
+#: includes/admin/importers/class-mailchimp-importer.php:319
 msgid ""
 "Before you can upload your import file, you will need to fix the following "
 "error:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:304
+#: includes/admin/importers/class-mailchimp-importer.php:328
 msgid "Choose a file from your computer:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:310
+#: includes/admin/importers/class-mailchimp-importer.php:334
 #, php-format
 msgid "Maximum size: %s"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:315
+#: includes/admin/importers/class-mailchimp-importer.php:339
 msgid "OR enter path to file:"
 msgstr ""
 
-#: includes/admin/importers/class-mailchimp-importer.php:322
+#: includes/admin/importers/class-mailchimp-importer.php:346
 msgid "Delimiter"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:350
+msgid "Assign to Lists"
+msgstr ""
+
+#: includes/admin/importers/class-mailchimp-importer.php:351
+msgid "Select the lists you are assigning these subscribers to."
 msgstr ""
 
 #: includes/admin/mailpoet-mailchimp-importer-addon-admin-functions.php:19
